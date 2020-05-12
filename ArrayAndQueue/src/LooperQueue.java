@@ -24,6 +24,7 @@ public class LooperQueue<T> implements QueueData<T> {
     public int getSize(){
         return size;
     }
+    @Override
     public void enqueue(T e){
         if((tail+1)%data.length==front){
             resize(getCapacity()*2);

@@ -1,6 +1,6 @@
 
 
-public class ArrayQueue<T> implements QueueData {
+public class ArrayQueue<T> implements QueueData<T> {
 
     private ArrayData<T> arrayData;
     public ArrayQueue(int capacity){
@@ -18,7 +18,7 @@ public class ArrayQueue<T> implements QueueData {
         return  arrayData.isEmpty();
     }
 
-
+    @Override
     public void enqueue(T e) {
         arrayData.addLast(e);
     }
