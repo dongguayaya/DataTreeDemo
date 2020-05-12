@@ -16,7 +16,7 @@ public class TestCl {
     }
     public static void main(String[] args) {
 
-        int opCount=100000;
+        int opCount=100;
 
         ArrayQueue<Integer> arrayQueue=new ArrayQueue<>();
         double time1=testQueue(arrayQueue,opCount);
@@ -24,6 +24,10 @@ public class TestCl {
 
         LooperQueue<Integer> loopQueue=new LooperQueue<>();
         double time2=testQueue(loopQueue,opCount);
-        System.out.println("LooperQueue,time"+time2+" s");
+        System.out.println("LooperQueue,time2"+time2+" s");
+
+        LinkedListQueue<Integer> linkQueue=new LinkedListQueue<>();
+        double time3=testQueue(linkQueue,opCount);
+        System.out.println("LooperQueue,time3"+time3+" s");
     }
 }
