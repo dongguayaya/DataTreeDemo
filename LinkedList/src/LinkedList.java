@@ -111,4 +111,25 @@ public class LinkedList<E> {
         res.append("NULL");
         return res.toString();
     }
+
+    //从链表删除index位置的元素，返回删除的元素
+    public E remove(int index){
+        if(index<0||index>size)
+            throw new IllegalArgumentException("Add failed.Illegal index.");
+        Node prev=dummyHead;
+        for(int i=0;i<index;i++){
+            prev=prev.next;
+        }
+        Node retNode=prev.next;
+        prev.next=retNode.next;
+        retNode.next=null;
+        size--;
+        return retNode.e;
+    }
+    public E removeFirst(){
+        return remove(0);
+    }
+    public E removeLast(){
+        return remove(size-1);
+    }
 }
