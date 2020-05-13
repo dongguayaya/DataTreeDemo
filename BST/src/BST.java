@@ -1,3 +1,6 @@
+import java.util.LinkedList;
+import java.util.Queue;
+
 //类型具有可比较性
 public class BST<E extends Comparable<E>> {
     private class Node{
@@ -109,6 +112,85 @@ public class BST<E extends Comparable<E>> {
         postOrder(node.right);
         System.out.println(node.e);
     }
+    //二分搜索层序遍历
+    public void levelOrder(){
+        Queue<Node> q=new LinkedList<>();
+        q.add(root);
+        while (!q.isEmpty()){
+            Node cur=q.remove();
+            System.out.println(cur.e);
+
+            if(cur.left!=null)
+                q.add(cur.left);
+            if(cur.right!=null)
+                q.add(cur.right);
+        }
+    }
+    //寻找二分搜索树的最小元素
+    public E minimum(){
+        if(size==0)
+            throw new IllegalArgumentException("BST is emty!");
+        return minimum(root).e;
+    }
+    //返回以node为根的二分搜索树的最小值所在的节点
+    private Node minimum(Node node){
+        if(node.left==null)
+            return node;
+        return minimum(node.left);
+    }
+
+    //寻找二分搜索树的最大元素
+    public E maxmum(){
+        if(size==0)
+            throw new IllegalArgumentException("BST is emty!");
+        return minimum(root).e;
+    }
+    //返回以node为根的二分搜索树的最大值所在的节点
+    private Node maxmum(Node node){
+        if(node.right==null)
+            return node;
+        return minimum(node.right);
+    }
+    //从二分搜索树中删除最小值所在的节点，返回最小值
+    public E removeMin(){
+        E ret=minimum();
+        removeMin(root);
+        return ret;
+    }
+    //删除掉以node为根的二分搜索树中的最小节点
+    //返回删除节后新的二分搜索树的根
+    private Node removeMin(Node node){
+        if(node.left==null){
+            Node rightNode=node.right;
+            node.right=null;
+            size--;
+            return rightNode;
+        }
+
+        node.left=removeMin(node.left);
+        return node;
+    }
+
+    //从二分搜索树中删除最大值所在的节点，返回最小值
+    public E removeMax(){
+        E ret=removeMax();
+        removeMin(root);
+        return ret;
+    }
+    //删除掉以node为根的二分搜索树中的最大节点
+    //返回删除节后新的二分搜索树的根
+    private Node removeMax(Node node){
+        if(node.right==null){
+            Node leftNode=node.left;
+            node.left=null;
+            size--;
+            return leftNode;
+        }
+
+        node.right=removeMax(node.right);
+        return node;
+    }
+
     @Override
     public String toString(){
         StringBuilder res=new StringBuilder();
