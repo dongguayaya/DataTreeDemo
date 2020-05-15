@@ -1,25 +1,19 @@
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 import java.util.PriorityQueue;
-import java.util.TreeMap;
 
 class Solution2 {
-    private class Freq implements Comparable<Freq>{
+    private class Freq {
         public int e,freq;
 
         public Freq(int e,int freq){
             this.e=e;
             this.freq=freq;
         }
+    }
+    private class FreqComparator implements Comparator<Freq>{
         @Override
-        public int compareTo(Freq ano) {
-            if(this.freq<ano.freq)
-                return -1;
-            else if(this.freq>ano.freq)
-                return 1;
-            else
-                return 0;
-
+        public int compare(Freq a, Freq b) {
+            return a.freq-b.freq;
         }
     }
     public List<Integer> topKFrequent(int[] nums, int k) {
@@ -32,7 +26,7 @@ class Solution2 {
                 map.put(num,1);
             }
         }
-        PriorityQueue<Freq> pq=new PriorityQueue<>();
+        PriorityQueue<Freq> pq=new PriorityQueue<>(new FreqComparator());
         for(int key:map.keySet()){
             if(pq.size()<k)
                 pq.add(new Freq(key,map.get(key)));
