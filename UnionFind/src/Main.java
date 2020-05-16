@@ -27,8 +27,10 @@ public class Main {
 //        UnionFindU unionFindU=new UnionFindU(size);
 //        System.out.println("UnifindU:"+testUF(unionFindU,m)+"s");
         UnionFindU2 unionFindU2=new UnionFindU2(size);
-        System.out.println("UnifindU:"+testUF(unionFindU2,m)+"s");
+        System.out.println("UnifindU2:"+testUF(unionFindU2,m)+"s");
         UnionFindU3 unionFindU3=new UnionFindU3(size);
-        System.out.println("UnifindU:"+testUF(unionFindU3,m)+"s");
+        System.out.println("UnifindU3:"+testUF(unionFindU3,m)+"s");
+        UnionFindU4 unionFindU4=new UnionFindU4(size);
+        System.out.println("UnifindU4:"+testUF(unionFindU4,m)+"s");
     }
 }
