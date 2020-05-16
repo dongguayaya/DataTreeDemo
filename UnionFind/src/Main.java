@@ -20,13 +20,15 @@ public class Main {
         return (endTime-startTime)/1000000000.0;
     }
     public static void main(String[] args) {
-        int size=100000;
-        int m=100000;
-        UnionFindQ unionFindQ=new UnionFindQ(size);
-        System.out.println("UnifindQ:"+testUF(unionFindQ,m)+"s");
-        UnionFindU unionFindU=new UnionFindU(size);
-        System.out.println("UnifindU:"+testUF(unionFindU,m)+"s");
+        int size=10000000;
+        int m=10000000;
+//        UnionFindQ unionFindQ=new UnionFindQ(size);
+//        System.out.println("UnifindQ:"+testUF(unionFindQ,m)+"s");
+//        UnionFindU unionFindU=new UnionFindU(size);
+//        System.out.println("UnifindU:"+testUF(unionFindU,m)+"s");
         UnionFindU2 unionFindU2=new UnionFindU2(size);
         System.out.println("UnifindU:"+testUF(unionFindU2,m)+"s");
+        UnionFindU3 unionFindU3=new UnionFindU3(size);
+        System.out.println("UnifindU:"+testUF(unionFindU3,m)+"s");
     }
 }
