@@ -40,7 +40,7 @@ public class AVLTree<K extends Comparable<K>, V> {
         for(int i=1;i<keys.size();i++)
             if(keys.get(i-1).compareTo(keys.get(i))>0)
                 return false;
-        return true;
+            return true;
     }
 
     private void inOrder(Node node, ArrayList<K> keys) {
@@ -53,9 +53,9 @@ public class AVLTree<K extends Comparable<K>, V> {
 
     //获取节点node的高度
     private int getHeight(Node node){
-        if(node==null)
-            return 0;
-        return node.height;
+    if(node==null)
+        return 0;
+    return node.height;
     }
 
     //获得node的平衡因子
@@ -126,10 +126,10 @@ public class AVLTree<K extends Comparable<K>, V> {
 //            System.out.println("unbalanced:"+balanceFactor);//abs绝对值
 
 
-            //平衡维护
-            //RR
-            if (balanceFactor>1&&getBalanceFactor(node.left)>=0)
-                return rightRotate(node);
+        //平衡维护
+        //RR
+        if (balanceFactor>1&&getBalanceFactor(node.left)>=0)
+            return rightRotate(node);
         //LL
         if (balanceFactor<-1&&getBalanceFactor(node.right)<=0)
             return leftRotate(node);
@@ -218,7 +218,7 @@ public class AVLTree<K extends Comparable<K>, V> {
         Node retNode;
         if( key.compareTo(node.key) < 0 ){
             node.left = remove(node.left , key);
-            retNode=node;
+            return node;
         }
         else if(key.compareTo(node.key) > 0 ){
             node.right = remove(node.right, key);
@@ -262,10 +262,10 @@ public class AVLTree<K extends Comparable<K>, V> {
         retNode.height=1+Math.max(getHeight(retNode.left),getHeight(retNode.right));
         //计算平衡因子
         int balanceFactor=getBalanceFactor(retNode);
-        //平衡维护
-        //RR
-        if (balanceFactor>1&&getBalanceFactor(retNode.left)>=0)
-            return rightRotate(retNode);
+            //平衡维护
+            //RR
+            if (balanceFactor>1&&getBalanceFactor(retNode.left)>=0)
+                return rightRotate(retNode);
         //LL
         if (balanceFactor<-1&&getBalanceFactor(retNode.right)<=0)
             return leftRotate(retNode);
