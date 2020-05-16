@@ -123,16 +123,26 @@ public class AVLTree<K extends Comparable<K>, V> {
         //计算平衡因子
         int balanceFactor=getBalanceFactor(node);
         if(Math.abs(balanceFactor)>1)
-            System.out.println("unbalanced:"+balanceFactor);//abs绝对值
+//            System.out.println("unbalanced:"+balanceFactor);//abs绝对值
 
 
         //平衡维护
+        //RR
         if (balanceFactor>1&&getBalanceFactor(node.left)>=0)
             return rightRotate(node);
+        //LL
         if (balanceFactor<-1&&getBalanceFactor(node.right)<=0)
             return leftRotate(node);
-
-
+        //LR
+        if(balanceFactor>1&&getBalanceFactor(node.left)<0) {
+            node.left = leftRotate(node.left);
+            return rightRotate(node);
+        }
+        //RL
+        if(balanceFactor<-1&&getBalanceFactor(node.right)>0) {
+            node.right = rightRotate(node.right);
+            return leftRotate(node);
+        }
         return node;
     }
 
